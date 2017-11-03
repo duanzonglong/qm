@@ -1,4 +1,3 @@
-import com.cwms.qm.model.outorder.DeliveryOrderDto;
 import com.cwms.qm.model.stockout.*;
 import com.cwms.qm.util.QimenSignUtils;
 import com.cwms.qm.util.WebUtils;
@@ -30,7 +29,7 @@ public class StockOrderTest
         qmStockoutRequestDto.setDeliveryOrder(deliveryOrder);
         deliveryOrder.setSenderInfo(new SenderInfo());
         deliveryOrder.setWarehouseCode("legou");
-        deliveryOrder.setDeliveryOrderCode("YGXX" + (long)(Math.random()*1000000000));
+        deliveryOrder.setDeliveryOrderCode("YGXX" + (long)(Math.random() * 1000000000));
         deliveryOrder.setOrderType("PTCK");
         deliveryOrder.setLogisticsCode("SF");
         OrderLines orderLines = new OrderLines();
@@ -58,7 +57,8 @@ public class StockOrderTest
 
         String sign = QimenSignUtils.sign(requestParamter, xml, secretKey);
         requestParamter.put("sign", sign);
-        String url = "http://172.172.172.205:8080/BH_CLIS/qimen" + "?" + QimenSignUtils.joinRequestParams(requestParamter);
+        String url =
+            "http://172.172.172.157:8080/BH_CLIS/qimen" + "?" + QimenSignUtils.joinRequestParams(requestParamter);
         String result = WebUtils.doQmPost(url, xml);
 
         System.out.println(result);
