@@ -11,6 +11,6 @@ StockOrderTest
 ## 重要说明:
 商品接口itemCode货主唯一<br>
 商品ID对接方式<br>
-  1 商品接口得到wms的id记录到自己的商品表，订单接口中itemId传wmsId
+  1 商品接口得到wms的id记录到自己的商品表，订单接口中itemId传wmsId<br>
   2 所有接口不传itemId,wms通过itemCode匹配（ERP无需记录wmsId,耦合度更小）
  
