@@ -15,6 +15,18 @@ public class StockOrderTest
     public static void main(String[] args)
         throws JAXBException, IOException
     {
+
+        for (int i=0;i<=500;i++)
+        {
+            create();
+        }
+
+
+    }
+
+    public static void create()
+        throws JAXBException, IOException
+    {
         QmStockoutRequestDto qmStockoutRequestDto = new QmStockoutRequestDto();
         DeliveryOrder deliveryOrder = new DeliveryOrder();
         ReceiverInfo receiverInfo = new ReceiverInfo();
@@ -41,6 +53,14 @@ public class StockOrderTest
         item1.setOwnerCode("legou");
         item1.setPlanQty(BigInteger.valueOf(1));
         orderLines.getOrderLine().add(item1);
+        OrderLine item2 = new OrderLine();
+        item2.setItemCode("000002");
+        item2.setInventoryType("ZP");
+        item2.setItemName("000002");
+        item2.setOrderLineNo("2");
+        item2.setOwnerCode("legou");
+        item2.setPlanQty(BigInteger.valueOf(1));
+        orderLines.getOrderLine().add(item2);
         qmStockoutRequestDto.setOrderLines(orderLines);
 
         JAXBContext jc = JAXBContext.newInstance(QmStockoutRequestDto.class);
