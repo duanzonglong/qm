@@ -24,11 +24,11 @@ public class SingleItemTest
         singleItem.setOwnerCode("lt");
         singleItem.setWarehouseCode("LTCK");
         Item item = new Item();
-        item.setItemCode("3333");
-        item.setItemName("3333");
+        item.setItemCode("000001");
+        item.setItemName("000001");
         item.setItemType("ZC");
         item.setBrandName("xxxx品牌");
-        item.setBarCode("123,345678");
+        item.setBarCode("000001");
         singleItem.setItem(item);
         JAXBContext jc = JAXBContext.newInstance(SingleItem.class);
         Marshaller ms = jc.createMarshaller();

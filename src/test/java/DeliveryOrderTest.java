@@ -77,19 +77,19 @@ public class DeliveryOrderTest
         StringWriter writer = new StringWriter();
         ms.marshal(deliveryOrderDto, writer);
         String xml = writer.toString();
-//        System.out.println(xml);
-        String appKey = "123456";
 
-        String qmCustomerId = "legou";
+        String appKey = "201804261190";
 
-        String secretKey = "123456";
+        String qmCustomerId = "lt";
+
+        String secretKey = "RA8wjgCNocNo99IAd5wFFW93Wll1TuRC";
 
         Map<String, String> requestParamter =
             WebUtils.getRequestParameter("deliveryorder.create", appKey, qmCustomerId);
 
         String sign = QimenSignUtils.sign(requestParamter, xml, secretKey);
         requestParamter.put("sign", sign);
-        String url = "http://172.172.172.157:8080/BH_CLIS/qimen" + "?" + QimenSignUtils.joinRequestParams(requestParamter);
+        String url = "http://c-wms.iask.in:8081/BH_CLIS/qimen" + "?" + QimenSignUtils.joinRequestParams(requestParamter);
         String result = WebUtils.doQmPost(url, xml);
 
         System.out.println(result);
