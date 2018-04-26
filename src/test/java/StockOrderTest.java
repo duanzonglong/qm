@@ -40,7 +40,7 @@ public class StockOrderTest
         deliveryOrder.setReceiverInfo(receiverInfo);
         qmStockoutRequestDto.setDeliveryOrder(deliveryOrder);
         deliveryOrder.setSenderInfo(new SenderInfo());
-        deliveryOrder.setWarehouseCode("legou");
+        deliveryOrder.setWarehouseCode("LTCK");
         deliveryOrder.setDeliveryOrderCode("YGXX" + (long)(Math.random() * 1000000000));
         deliveryOrder.setOrderType("PTCK");
         deliveryOrder.setLogisticsCode("SF");
@@ -50,7 +50,7 @@ public class StockOrderTest
         item1.setInventoryType("ZP");
         item1.setItemName("000001");
         item1.setOrderLineNo("1");
-        item1.setOwnerCode("legou");
+        item1.setOwnerCode("lt");
         item1.setPlanQty(BigInteger.valueOf(1));
         orderLines.getOrderLine().add(item1);
         OrderLine item2 = new OrderLine();
@@ -58,7 +58,7 @@ public class StockOrderTest
         item2.setInventoryType("ZP");
         item2.setItemName("000002");
         item2.setOrderLineNo("2");
-        item2.setOwnerCode("legou");
+        item2.setOwnerCode("lt");
         item2.setPlanQty(BigInteger.valueOf(1));
         orderLines.getOrderLine().add(item2);
         qmStockoutRequestDto.setOrderLines(orderLines);
@@ -68,9 +68,11 @@ public class StockOrderTest
         StringWriter writer = new StringWriter();
         ms.marshal(qmStockoutRequestDto, writer);
         String xml = writer.toString();
-        String appKey = "123456";
-        String qmCustomerId = "legou";
-        String secretKey = "123456";
+        String appKey = "201804261190";
+
+        String qmCustomerId = "lt";
+
+        String secretKey = "RA8wjgCNocNo99IAd5wFFW93Wll1TuRC";
 
         Map<String, String> requestParamter =
             WebUtils.getRequestParameter("stockout.create", appKey, qmCustomerId);
@@ -78,7 +80,7 @@ public class StockOrderTest
         String sign = QimenSignUtils.sign(requestParamter, xml, secretKey);
         requestParamter.put("sign", sign);
         String url =
-            "http://172.172.172.157:8080/BH_CLIS/qimen" + "?" + QimenSignUtils.joinRequestParams(requestParamter);
+            "http://c-wms.iask.in:8081/BH_CLIS/qimen" + "?" + QimenSignUtils.joinRequestParams(requestParamter);
         String result = WebUtils.doQmPost(url, xml);
 
         System.out.println(result);

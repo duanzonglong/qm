@@ -38,7 +38,7 @@ public class DeliveryOrderTest
         deliveryOrder.setDeliveryOrderCode("YGDJ" + (long)(Math.random()*1000000000));
         deliveryOrder.setLogisticsCode("SF");
         deliveryOrder.setOrderType("JYCK");
-        deliveryOrder.setWarehouseCode("legou");
+        deliveryOrder.setWarehouseCode("LTCK");
         deliveryOrder.setShopNick("金林专供");
         deliveryOrder.setSourcePlatformCode("TB");
         ReceiverInfo receiverInfo = new ReceiverInfo();
@@ -58,7 +58,7 @@ public class DeliveryOrderTest
         item1.setInventoryType("ZP");
         item1.setItemName("000001");
         item1.setOrderLineNo("1");
-        item1.setOwnerCode("legou");
+        item1.setOwnerCode("lt");
         item1.setActualPrice(1d);
         item1.setPlanQty("1");
         orderLines.getOrderLine().add(item1);
@@ -67,7 +67,7 @@ public class DeliveryOrderTest
         item2.setInventoryType("ZP");
         item2.setItemName("000002");
         item2.setOrderLineNo("2");
-        item2.setOwnerCode("legou");
+        item2.setOwnerCode("lt");
         item2.setPlanQty("10");
         item2.setActualPrice(1d);
 //        orderLines.getOrderLine().add(item2);
