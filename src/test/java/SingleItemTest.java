@@ -21,8 +21,8 @@ public class SingleItemTest
     {
         SingleItem singleItem = new SingleItem();
         singleItem.setActionType("ADD");
-        singleItem.setOwnerCode("DBP");
-        singleItem.setWarehouseCode("LS001");
+        singleItem.setOwnerCode("lt");
+        singleItem.setWarehouseCode("LTCK");
         Item item = new Item();
         item.setItemCode("3333");
         item.setItemName("3333");
@@ -36,11 +36,11 @@ public class SingleItemTest
         ms.marshal(singleItem, writer);
         String xml = writer.toString();
         
-        String appKey = "dongpingbang";
+        String appKey = "201804261190";
         
-        String qmCustomerId = "DBP";
+        String qmCustomerId = "lt";
         
-        String secretKey = "1234567890";
+        String secretKey = "RA8wjgCNocNo99IAd5wFFW93Wll1TuRC";
         
         Map<String, String> requestParamter =
             WebUtils.getRequestParameter("singleitem.synchronize", appKey, qmCustomerId);
@@ -48,7 +48,7 @@ public class SingleItemTest
         String sign = QimenSignUtils.sign(requestParamter, xml, secretKey);
         requestParamter.put("sign", sign);
         String url =
-            "http://172.172.172.157:8080/BH_CLIS/qimen" + "?" + QimenSignUtils.joinRequestParams(requestParamter);
+            "http://c-wms.iask.in:8081/BH_CLIS/qimen" + "?" + QimenSignUtils.joinRequestParams(requestParamter);
         String result = WebUtils.doQmPost(url, xml);
         System.out.println("请求URL:" + url + "请求报文:" + xml);
         System.out.println(result);
