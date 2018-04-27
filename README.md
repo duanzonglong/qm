@@ -31,3 +31,47 @@ StockOrderTest
 
 ## 2018.4.26更新说明
 商品接口添加包装率
+
+### 开始联调
++ 找运维拿到自己的appkey secret customerId 货主编码-ownerCode 仓库编码-warehouseCode 
++ 以商品接口举例修改 SingleItemTest
+```
+        SingleItem singleItem = new SingleItem();
+        singleItem.setActionType("ADD");
+        //修改自己的 ownerCode 对应wms货主
+        singleItem.setOwnerCode("lt");
+        //修改自己的 warehouseCode 对应wms仓库
+        singleItem.setWarehouseCode("LTCK");
+        Item item = new Item();
+        item.setItemCode("000001");
+        item.setItemName("000001");
+        item.setItemType("ZC");
+        item.setBrandName("xxxx品牌");
+        item.setBarCode("000001");
+        singleItem.setItem(item);
+        JAXBContext jc = JAXBContext.newInstance(SingleItem.class);
+        Marshaller ms = jc.createMarshaller();
+        StringWriter writer = new StringWriter();
+        ms.marshal(singleItem, writer);
+        String xml = writer.toString();
+        
+        //修改自己的appKey
+        String appKey = "201804261190";
+        
+        //修改自己的customerId
+        String qmCustomerId = "lt";
+        
+        //修改自己的secret
+        String secretKey = "RA8wjgCNocNo99IAd5wFFW93Wll1TuRC";
+        
+        Map<String, String> requestParamter =
+            WebUtils.getRequestParameter("singleitem.synchronize", appKey, qmCustomerId);
+        
+        String sign = QimenSignUtils.sign(requestParamter, xml, secretKey);
+        requestParamter.put("sign", sign);
+        String url =
+            "http://c-wms.iask.in:8081/BH_CLIS/qimen" + "?" + QimenSignUtils.joinRequestParams(requestParamter);
+        String result = WebUtils.doQmPost(url, xml);
+        System.out.println("请求URL:" + url + "请求报文:" + xml);
+        System.out.println(result);
+```
