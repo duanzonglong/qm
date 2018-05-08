@@ -21,7 +21,7 @@ public class DeliveryOrderTest
     public static void main(String[] args)
         throws JAXBException, IOException
     {
-        for (int i=0;i<=500;i++)
+        for (int i=0;i<=0;i++)
         {
             create();
         }
@@ -36,7 +36,8 @@ public class DeliveryOrderTest
         deliveryOrder.setCreateTime(sdf.format(new Date()));
         deliveryOrder.setOperateTime(sdf.format(new Date()));
         deliveryOrder.setDeliveryOrderCode("YGDJ" + (long)(Math.random()*1000000000));
-        deliveryOrder.setLogisticsCode("SF");
+        deliveryOrder.setLogisticsCode("DBKD");
+        deliveryOrder.setLogisticsAreaCode("大头笔");
         deliveryOrder.setOrderType("JYCK");
         deliveryOrder.setWarehouseCode("LTCK");
         deliveryOrder.setShopNick("金林专供");
@@ -72,6 +73,10 @@ public class DeliveryOrderTest
         item2.setActualPrice(1d);
 //        orderLines.getOrderLine().add(item2);
         deliveryOrderDto.setOrderLines(orderLines);
+
+        ExtendProps extendProps = new ExtendProps();
+        extendProps.setExt1("222222");
+        deliveryOrder.setExtendProps(extendProps);
         JAXBContext jc = JAXBContext.newInstance(DeliveryOrderDto.class);
         Marshaller ms = jc.createMarshaller();
         StringWriter writer = new StringWriter();
@@ -89,7 +94,7 @@ public class DeliveryOrderTest
 
         String sign = QimenSignUtils.sign(requestParamter, xml, secretKey);
         requestParamter.put("sign", sign);
-        String url = "http://c-wms.iask.in:8081/BH_CLIS/qimen" + "?" + QimenSignUtils.joinRequestParams(requestParamter);
+        String url = "http://172.172.172.205:8080/BH_CLIS/qimen" + "?" + QimenSignUtils.joinRequestParams(requestParamter);
         String result = WebUtils.doQmPost(url, xml);
 
         System.out.println(result);

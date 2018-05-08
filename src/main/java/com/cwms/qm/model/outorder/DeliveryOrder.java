@@ -28,9 +28,31 @@ public class DeliveryOrder
 
     private String logisticsName;
 
+    private String logisticsAreaCode;
+
     private ReceiverInfo receiverInfo;
 
     private SenderInfo senderInfo;
+
+    private ExtendProps extendProps;
+
+    public String getLogisticsAreaCode() {
+        return logisticsAreaCode;
+    }
+
+    public void setLogisticsAreaCode(String logisticsAreaCode) {
+        this.logisticsAreaCode = logisticsAreaCode;
+    }
+
+    public ExtendProps getExtendProps()
+    {
+        return extendProps;
+    }
+
+    public void setExtendProps(ExtendProps extendProps)
+    {
+        this.extendProps = extendProps;
+    }
 
     public SenderInfo getSenderInfo()
     {
