@@ -32,6 +32,10 @@ StockOrderTest
 ## 2018.4.26更新说明
 商品接口添加包装率
 
+## 2018.5.14更新说明
+添加php开发示例 php/test.php
+
+
 ### 开始联调
 + 找运维拿到自己的appkey secret customerId 货主编码-ownerCode 仓库编码-warehouseCode 
 + 以商品接口举例修改 SingleItemTest
