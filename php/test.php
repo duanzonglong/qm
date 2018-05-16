@@ -6,7 +6,6 @@
  * Time: 下午3:49
  */
 
-include "Qimenbody.php";
 include "Qimen.php";
 include "SingleitemSynchronizeRequest.php";
 
