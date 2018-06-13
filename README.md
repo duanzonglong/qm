@@ -17,6 +17,10 @@ StockOrderTest
 发货接口适用于电商订单，不可部分发货订单<br>
 出库接口适用于2B订单支持部分发货和全发控制<br>
 
+## 关于多仓多货主说明
+1 wms支持 一个APPKEY一个货主(customerId和ownerCode一样，可以使用货主同步接口自动同步货主)
+2 一个APPKY多个货主（customerId不变ownerCode变）ERP和WMS同步新增货主 wms还需要同步新增奇门配置
+
 ## 2018.1.15更新说明
 发货确认接口明细添加返回SN<br>
 发货确认接口添加多包裹返回<br>
