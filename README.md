@@ -29,8 +29,8 @@ StockOrderTest
 + 库存盘点通知4.16或库存异动通知接口4.17 二选一即可(wms发起的损益反馈给ERP)
 
 ## 关于多仓多货主说明
-1 wms支持 一个APPKEY一个货主(customerId和ownerCode一样，可以使用货主同步接口自动同步货主)
-2 一个APPKY多个货主（customerId不变ownerCode变）ERP和WMS同步新增货主 wms还需要同步新增奇门配置
+1 wms支持 一个APPKEY一个货主(customerId和ownerCode一样) ERP和WMS同步新增货主 wms还需要同步新增奇门配置
+2 一个APPKY多个货主（customerId不变ownerCode变，可以使用货主同步接口自动同步货主）
 
 ## 2018.1.15更新说明
 发货确认接口明细添加返回SN<br>
