@@ -53,6 +53,9 @@ StockOrderTest
 ## 2018.6.12更新说明
 采购单反馈添加供应商
 
+## 2018.7.6更新说明
+更新上架回调接口
+
 ### 开始联调
 + 找运维拿到自己的appkey secret customerId 货主编码-ownerCode 仓库编码-warehouseCode 
 + 以商品接口举例修改 SingleItemTest
