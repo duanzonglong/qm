@@ -79,6 +79,18 @@ public class Item
 
     private String remark;
 
+    private ExtendProps extendProps;
+
+    public ExtendProps getExtendProps()
+    {
+        return extendProps;
+    }
+
+    public void setExtendProps(ExtendProps extendProps)
+    {
+        this.extendProps = extendProps;
+    }
+
     public String getItemId()
     {
         return itemId;
